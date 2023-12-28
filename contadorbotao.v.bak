@@ -1,0 +1,29 @@
+module contadorbotao(//SET COMO ZERO 
+ input wire clk,     // Clock input
+ //input wire rst,     // Reset input
+ output wire [1:0] count // 2-bit counter output
+);
+
+  reg [1:0] d_ff_outputs; // Data outputs for the D flip-flops
+
+  // D flip-flop instantiations
+  DFlipFlop ff0 (.clk(clk), .rst(rst), .D(d_ff_outputs[0]), .q());
+  DFlipFlop ff1 (.clk(clk), .rst(rst), .D(d_ff_outputs[1]), .q());
+
+  // Output assignment (2-bit binary counter)
+  assign count = d_ff_outputs;
+  always @(negedge clk) begin//or posedge rst
+    //if (rst) begin
+      // Reset condition
+      //d_ff_outputs <= 2'b00;
+    //end else begin
+      // Increment the counter on each clock edge
+		if (d_ff_outputs != 2'b11) begin 
+			d_ff_outputs <= d_ff_outputs + 1;
+		end
+		else begin
+			d_ff_outputs <= 2'b00;
+      end
+  end 
+endmodule 
+//COMO FAZER EM ESTRUTURAL

@@ -1,0 +1,14 @@
+module enableattack(
+input A,B,C,D,E,F,G,
+output s1,s2,s3,s4,s5,s6
+);//botão é A 
+assign s1 = (~A & B & ~E & G) | (~A & B & ~E & F) | (~A & B & E & ~F);
+assign s2 = (~A & C & ~E & G) | (~A & C & ~E & F) | (~A & C & E & ~F);
+assign s3 = (~A & D & ~E & G) | (~A & D & ~E & F) | (~A & D &  E & ~F);
+assign s4 = (~A & D & E & ~F) | (~A & C & E & ~F) | (~A & B & E & ~F);
+assign s5 = (~A & D & ~E & F) | (~A & C & ~E & F) | (~A & B & ~E & F);
+assign s6 = (~A & D & ~E & G) | (~A & D & ~F & G) | (~A & C & ~E & G) | (~A & C & ~F & G) | (~A & B & ~E & G) | (~A & B & ~F & G);
+endmodule 
+//colocar as expressões 
+//pega dps da verificação com o modo
+//caso verifique ataque com modo diferente de ataque o jogador perde vida

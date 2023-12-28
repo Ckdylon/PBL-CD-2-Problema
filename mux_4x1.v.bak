@@ -1,0 +1,16 @@
+module mux_4x1 (
+  input [3:0] data_in,  // 4-bit input data
+  input wire [1:0] sel,      // 3-bit select input
+  output reg data_out        // Output data
+);
+
+always @ (posedge sel or posedge data_in)
+  case(sel)
+    2'b00: data_out <= data_in[0];
+    2'b01: data_out <= data_in[1];
+    2'b10: data_out <= data_in[2];
+    2'b11: data_out <= data_in[3];
+    // You can add more cases for larger MUX
+    default: data_out <= 4'b0000; // Default case
+  endcase
+endmodule 

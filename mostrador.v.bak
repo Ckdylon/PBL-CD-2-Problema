@@ -1,0 +1,14 @@
+module mostrador(
+	input a, b, c, d, e, f, g, h,
+    output SEGA, SEGB, SEGC, SEGD, SEGE, SEGF, SEGG
+);
+	 assign SEGF = ~f & h | a & b | g;
+	 assign SEGG = ~a & ~b & ~d & ~e & ~f & ~g | ~c & d & e | a & b;
+	 assign SEGE = h | f | a & b;
+	 assign SEGD = ~f & ~g & h | f & ~h | ~c & ~d & e | c & d & ~e | b | a;
+
+	 assign SEGC = g & ~h | ~c & d & e | c & ~d & e | c & d & ~e | b;
+	 assign SEGB = f & h | d & e | c & e | c & d | a & b;
+	 assign SEGA = ~f & ~g & h | f & ~h | a & b;
+endmodule
+//mudar para estrutural 
